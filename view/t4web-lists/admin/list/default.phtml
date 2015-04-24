@@ -1,0 +1,61 @@
+<?php /* @var $viewModel \T4webLists\Controller\Admin\ViewModel\ListViewModel */ ?>
+<?php $viewModel = $this->viewModel()->getCurrent(); ?>
+
+<section class="content-header">
+    <h1><i class="fa fa-list"></i> Lists</h1>
+</section>
+
+<section class="content">
+
+    <div class="box">
+        <div class="box-header">
+            <div class="btn-group">
+                <?php foreach($viewModel->getTypes() as $type): ?>
+                    <a class="btn btn-default" href="<?= $this->url('admin-lists', ['type' => $type->getCode()])?>"><?= $type->getName(); ?></a>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+
+    <!-- Default box -->
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">List</h3>
+            <div class="box-tools">
+                <a href="<?= $this->url('admin-list-add'); ?>" class="btn btn-labeled btn-primary btn-sm">
+                    <i class="btn-label fa fa-plus"></i> Add list value
+                </a>
+            </div>
+        </div><!-- /.box-header -->
+
+        <div class="box-body no-padding">
+            <?php if($viewModel->getLists()->count()): ?>
+                <table class="table">
+                    <tr>
+                        <th width="10">#</th>
+                        <th>Name</th>
+                        <th width="200">Actions</th>
+                    </tr>
+
+                    <?php foreach($viewModel->getLists() as $list): ?>
+                        <tr>
+                            <td><?= $list->getId(); ?></td>
+                            <td><?= $list->getName(); ?></td>
+                            <td>
+                                <a href="<?= $this->url('admin-list-edit', ['id' => $list->getId()]); ?>" class="btn btn-warning btn-xs" >
+                                    <i class="fa fa-pencil"></i> Edit
+                                </a>
+                                <a href="<?=$this->url('admin-list-delete', ['id' => $list->getId()])?>" class="btn btn-danger btn-xs" >
+                                    <i class="fa fa-times"></i> Delete
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
+            <?php else: ?>
+                <h3 class="box-title">No records found</h3>
+            <?php endif; ?>
+        </div><!-- /.box-body -->
+    </div>
+
+</section>

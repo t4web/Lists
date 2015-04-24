@@ -1,0 +1,42 @@
+{
+    "name": "t4web/lists",
+    "description": "ZF2 Module for managing lists",
+    "type": "library",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "zf2",
+        "lists"
+    ],
+    "homepage": "https://github.com/t4web/Lists",
+    "authors": [
+        {
+            "name": "Max Gulturyan",
+            "email": "gulturyan@gmail.com",
+            "homepage": "http://about.me/maxgu"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/t4web/base.git"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "zendframework/zendframework": "2.4.*",
+
+        "t4web/base": "dev-master"
+    },
+    "require-dev" : {
+        "codeception/codeception": "2.*"
+    },
+
+    "autoload": {
+        "psr-0": {
+            "T4webLists": "src/"
+        },
+        "classmap": [
+            "./Module.php"
+        ]
+    }
+}
