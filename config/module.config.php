@@ -18,10 +18,10 @@ return array(
             'admin-lists' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route' => '/lists[/:type]',
+                    'route' => '/admin/lists[/:type]',
                     'defaults' => array(
                         '__NAMESPACE__' => 'T4webLists\Controller\Admin',
-                        'controller' => 'Show',
+                        'controller' => 'List',
                         'action' => 'default',
                     ),
                 ),
@@ -81,7 +81,7 @@ return array(
 
     'db' => array(
         'tables' => array(
-            't4weblists-lists' => array(
+            't4weblists-objectlist' => array(
                 'name' => 'lists',
                 'columnsAsAttributesMap' => array(
                     'id' => 'id',

@@ -15,8 +15,8 @@ use T4webBase\Domain\Service\Update as ServiceUpdate;
 use T4webBase\Domain\Service\BaseFinder as ServiceFinder;
 
 class Module implements AutoloaderProviderInterface, ConfigProviderInterface,
-                        ControllerProviderInterface, ConsoleUsageProviderInterface,
-                        ServiceProviderInterface
+    ControllerProviderInterface, ConsoleUsageProviderInterface,
+    ServiceProviderInterface
 {
     public function getConfig($env = null)
     {
@@ -37,7 +37,7 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface,
     public function getConsoleUsage(ConsoleAdapterInterface $console)
     {
         return array(
-            'employees init' => 'Initialize module',
+            'lists init' => 'Initialize module',
         );
     }
 
@@ -45,42 +45,42 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface,
     {
         return array(
             'factories' => array(
-                'T4webLists\ObjectLists\Service\Create' => function (ServiceManager $sm) {
+                'T4webLists\ObjectList\Service\Create' => function (ServiceManager $sm) {
                     $eventManager = $sm->get('EventManager');
-                    $eventManager->addIdentifiers('T4webLists\ObjectLists\Service\Create');
+                    $eventManager->addIdentifiers('T4webLists\ObjectList\Service\Create');
 
                     return new ServiceCreate(
-                        $sm->get('T4webLists\ObjectLists\InputFilter\Create'),
-                        $sm->get('T4webLists\ObjectLists\Repository\DbRepository'),
-                        $sm->get('T4webLists\ObjectLists\Factory\EntityFactory'),
+                        $sm->get('T4webLists\ObjectList\InputFilter\Create'),
+                        $sm->get('T4webLists\ObjectList\Repository\DbRepository'),
+                        $sm->get('T4webLists\ObjectList\Factory\EntityFactory'),
                         $eventManager
                     );
                 },
 
-                'T4webLists\ObjectLists\Service\Update' => function (ServiceManager $sm) {
+                'T4webLists\ObjectList\Service\Update' => function (ServiceManager $sm) {
                     $eventManager = $sm->get('EventManager');
-                    $eventManager->addIdentifiers('T4webLists\ObjectLists\Service\Update');
+                    $eventManager->addIdentifiers('T4webLists\ObjectList\Service\Update');
 
                     return new ServiceUpdate(
-                        $sm->get('T4webLists\ObjectLists\InputFilter\Update'),
-                        $sm->get('T4webLists\ObjectLists\Repository\DbRepository'),
-                        $sm->get('T4webLists\ObjectLists\Criteria\CriteriaFactory'),
+                        $sm->get('T4webLists\ObjectList\InputFilter\Update'),
+                        $sm->get('T4webLists\ObjectList\Repository\DbRepository'),
+                        $sm->get('T4webLists\ObjectList\Criteria\CriteriaFactory'),
                         $eventManager
                     );
                 },
 
-                'T4webLists\ObjectLists\Service\Finder' => function (ServiceManager $sm) {
+                'T4webLists\ObjectList\Service\Finder' => function (ServiceManager $sm) {
                     return new ServiceFinder(
-                        $sm->get('T4webLists\ObjectLists\Repository\DbRepository'),
-                        $sm->get('T4webLists\ObjectLists\Criteria\CriteriaFactory')
+                        $sm->get('T4webLists\ObjectList\Repository\DbRepository'),
+                        $sm->get('T4webLists\ObjectList\Criteria\CriteriaFactory')
                     );
                 },
             ),
             'invokables' => array(
                 'T4webLists\Controller\Admin\ViewModel\ListViewModel' => 'T4webLists\Controller\Admin\ViewModel\ListViewModel',
 
-                'T4webLists\ObjectLists\InputFilter\Create' => 'T4webLists\ObjectLists\InputFilter\Create',
-                'T4webLists\ObjectLists\InputFilter\Update' => 'T4webLists\ObjectLists\InputFilter\Update',
+                'T4webLists\ObjectList\InputFilter\Create' => 'T4webLists\ObjectList\InputFilter\Create',
+                'T4webLists\ObjectList\InputFilter\Update' => 'T4webLists\ObjectList\InputFilter\Update',
             ),
         );
     }
@@ -92,12 +92,12 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface,
                 'T4webLists\Controller\Console\Init' => function (ControllerManager $cm) {
                     $sl = $cm->getServiceLocator();
 
-                    return new InitController($sl->get('Zend\Db\Adapter\Adapter'));
+                    return new Controller\Console\InitController($sl->get('Zend\Db\Adapter\Adapter'));
                 },
                 'T4webLists\Controller\Admin\List' => function (ControllerManager $cm) {
                     $sl = $cm->getServiceLocator();
-                    return new ListController(
-                        $sl->get('T4webLists\ObjectLists\Service\Finder'),
+                    return new Controller\Admin\ListController(
+                        $sl->get('T4webLists\ObjectList\Service\Finder'),
                         $sl->get('T4webLists\Controller\Admin\ViewModel\ListViewModel')
                     );
                 },

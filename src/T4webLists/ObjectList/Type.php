@@ -1,6 +1,6 @@
 <?php
 
-namespace T4webList\ObjectList;
+namespace T4webLists\ObjectList;
 
 use T4webBase\Domain\Enum;
 

@@ -23,7 +23,7 @@ class ListViewModel extends ViewModel
     /**
      * @param ObjectList\CalendarCollection $lists
      */
-    public function setLists(ObjectList\CalendarCollection $lists)
+    public function setLists($lists)
     {
         $this->lists = $lists;
     }
