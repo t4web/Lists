@@ -1,2 +1,2 @@
 # Lists
-ZF2 Module ащк manage the lists
+ZF2 Module for manage the lists
