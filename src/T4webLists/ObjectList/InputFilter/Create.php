@@ -19,7 +19,7 @@ class Create extends InputFilter
 
         // name
         $name = new Text('name', 0, 250);
-        $name->setRequired(false);
+        $name->setRequired(true);
         $this->add($name);
 
         // type

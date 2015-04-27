@@ -1,0 +1,23 @@
+<?php /* @var $viewModel \T4webLists\Controller\Admin\ViewModel\ListViewModel */ ?>
+<?php $viewModel = $this->viewModel()->getCurrent(); ?>
+
+<section class="content-header">
+    <h1><i class="fa fa-list"></i> Lists</h1>
+</section>
+
+<section class="content">
+
+    <div class="col-md-12">
+        <div class="row">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">Add list value</h3>
+                </div><!-- /.box-header -->
+
+                <?= $this->renderForm($viewModel->getForm()); ?>
+
+            </div>
+        </div>
+    </div>
+
+</section>

@@ -12,7 +12,7 @@
             <div class="box-header">
                 <div class="btn-group">
                     <?php foreach($viewModel->getTypes() as $code => $type): ?>
-                        <a class="btn btn-default" href="<?= $this->url('admin-lists', ['type' => $code])?>"><?= $type; ?></a>
+                        <a class="btn btn-default" href="<?= $this->url('admin-lists', ['type' => $code]); ?>"><?= $type; ?></a>
                     <?php endforeach; ?>
                 </div>
             </div>

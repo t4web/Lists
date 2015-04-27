@@ -43,7 +43,7 @@ return array(
                     'route' => '/list/edit[/:id]',
                     'defaults' => array(
                         '__NAMESPACE__' => 'T4webLists\Controller\Admin',
-                        'controller' => 'Edit',
+                        'controller' => 'Add',
                         'action' => 'default',
                     ),
                 ),
@@ -54,11 +54,18 @@ return array(
                     'route' => '/list/delete[/:id]',
                     'defaults' => array(
                         '__NAMESPACE__' => 'T4webLists\Controller\Admin',
-                        'controller' => 'Delete',
-                        'action' => 'default',
+                        'controller' => 'Add',
+                        'action' => 'delete',
                     ),
                 ),
             ),
+        ),
+    ),
+
+    'view_helpers' => array(
+        'invokables' => array(
+            'renderForm' => 'T4webLists\View\Helper\RenderForm',
+            'formElementErrors' => 'T4webLists\View\Helper\FormElementErrors',
         ),
     ),
 
