@@ -39,4 +39,10 @@
             "./Module.php"
         ]
     }
+
+    "scripts": {
+        "post-install-cmd": [
+            "php public/index.php list init"
+        ]
+    }
 }
