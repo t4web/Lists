@@ -38,11 +38,5 @@
         "classmap": [
             "./Module.php"
         ]
-    },
-
-    "scripts": {
-        "post-install-cmd": [
-            "php public/index.php lists init"
-        ]
     }
 }
