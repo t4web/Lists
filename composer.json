@@ -42,7 +42,7 @@
 
     "scripts": {
         "post-install-cmd": [
-            "php public/index.php list init"
+            "php public/index.php lists init"
         ]
     }
 }
