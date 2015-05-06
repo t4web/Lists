@@ -38,7 +38,7 @@
         "classmap": [
             "./Module.php"
         ]
-    }
+    },
 
     "scripts": {
         "post-install-cmd": [
