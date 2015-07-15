@@ -46,11 +46,10 @@ class AddController extends AbstractActionController
 
         $id = $this->params('id');
 
-        $data = $this->finderService->find(['T4webLists' => ['ObjectList' => [
-            'id' => $id,
-        ]]]);
-
-        if($data) {
+        if($id) {
+            $data = $this->finderService->find(['T4webLists' => ['ObjectList' => [
+                'id' => $id,
+            ]]]);
             $this->form->setData($data->extract());
         }
 
