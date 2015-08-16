@@ -119,6 +119,11 @@ return array(
                 'field' => 'type',
                 'buildMethod' => 'addFilterEqual',
             ),
+            'types' => array(
+                'table' => 'lists',
+                'field' => 'type',
+                'buildMethod' => 'addFilterIn',
+            ),
         ),
     ),
 );
